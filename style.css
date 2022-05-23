@@ -3,16 +3,18 @@ FONTS
 *****/
 
 @font-face {
-    font-family: "BetterFly";
-    src: url("../fonts/betterfly-draft-webfont.woff2") format("woff2"),
-    url("../fonts/betterfly-draft-webfont.woff") format("woff");
+    font-family: "BFNarrow";
+    src: url("/fonts/betterfly-narrow-webfont.woff2") format("woff2"),
+    url("/fonts/betterfly-narrow-webfont.woff") format("woff");
 }
 
+
 @font-face {
-    font-family: "BFNarrow";
-    src: url("../fonts/betterfly-narrow-webfont.woff2") format("woff2"),
-    url("../fonts/betterfly-narrow-webfont.woff") format("woff");
+    font-family: "BetterFly";
+    src: url("/fonts/betterfly-narrow-webfont.woff2") format("woff2"),
+    url("/fonts/betterfly-narrow-webfont.woff") format("woff");
 }
+
 
 @font-face {
     font-family: "Crimson Text";
@@ -58,6 +60,10 @@ FONTS
     U+FEFF, U+FFFD;
 }
 
+.font {
+    font-family: "BetterFly", sans-serif;
+}
+
 :root {
     --clr-text: #3d3d3d;
     --clr-primary: #067e0a;
@@ -66,7 +72,7 @@ FONTS
     --clr-accent-dark: #44264d;
 
 
-    --ff-title: "BFNarrow", sans-serif;
+    --ff-title: "BetterFly", sans-serif;
     --ff-serif: "Crimson Text", serif;
     --ff-logo: "BetterFly", sans-serif;
 }
@@ -99,6 +105,9 @@ section {
     padding: 4em 1em;
 }
 
+.mb-0 {
+    margin-bottom: 0;
+}
 
 /* Typography */
 
@@ -106,9 +115,12 @@ h1, h2, h3, h4, p {
     margin: 0;
 }
 
-h2,
+h2 {
+    font-family: "BetterFly", sans-serif;
+    text-transform: uppercase;
+}
+
 h3 {
-    font-family: var(--ff-title);
     line-height: 0.8;
     letter-spacing: 1px;
 }
@@ -120,6 +132,10 @@ h2 {
 
 p {
     margin-bottom: 0.85em;
+}
+
+p:last-child {
+    margin-bottom: 0;
 }
 
 .section-title-small {
@@ -155,7 +171,7 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 nav a {
@@ -175,8 +191,10 @@ nav a:focus {
 .btn-group {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     flex-direction: column;
 }
+
 
 .btn {
     padding: 0.75em 2.5em;
@@ -187,17 +205,31 @@ nav a:focus {
     border-radius: 0.35em;
 }
 
-
 .btn-primary {
     background: var(--clr-primary);
 }
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--clr-primary-dark);
+}
+
+.btn-accent {
+    background: var(--clr-accent);
+}
+
+.btn-accent:hover,
+.btn-accent:focus {
+    background: var(--clr-accent-dark);
+}
+
 
 /* homepage style*/
 
 
 .hero {
-    background-color: #333;
-    background-image: url("img/img/Hippie-Chick-Monkey.jpeg");
+    background-color: #555;
+    background-image: url("img/img/hero-bg.jpeg");
     background-blend-mode: multiply;
     background-attachment: fixed;
     background-size: cover;
@@ -216,6 +248,7 @@ nav a:focus {
 
 .about-us__intro {
     background-image: url("img/img/granola-bg.jpeg");
+    background-size: cover;
     padding: 3em 1em 1.5em;
 }
 
@@ -230,12 +263,19 @@ nav a:focus {
 .products {
     display: flex;
     flex-direction: column;
+    max-width: 30rem;
+    margin: 0 auto;
+    gap: 0.2em;
 }
 
 .product {
     border-radius: 1em;
     overflow: hidden;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+}
+
+.product:last-of-type {
+    margin-bottom: 2em;
 }
 
 .product__content {
@@ -252,5 +292,131 @@ nav a:focus {
     font-size: 0.75rem;
     color: rgba(0, 0, 0, 0.85);
 }
+
+footer {
+    background: var(--clr-accent-dark);
+    padding: 3em 1em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+    gap: 5em;
+}
+
+footer a {
+    color: inherit;
+}
+
+.footer-social,
+.footer-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-nav a {
+    padding: 0.75em;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+.social-link {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.social-icon {
+    width: 50px;
+}
+
+
+@media only screen and (min-width: 750px) {
+    section {
+        padding: 6em 1em;
+    }
+
+    .btn-group {
+        margin-top: 1em;
+        flex-direction: row;
+    }
+
+    .btn + .btn {
+        margin-left: 0.5em;
+    }
+
+    .about-us {
+        flex-direction: row;
+    }
+
+    .about-us__intro,
+    .about-us__body {
+        flex: 0 1 50%;
+        display: flex;
+        flex-direction: column;
+        padding: 4em 2em;
+        justify-content: center;
+    }
+
+    .about-us__intro {
+        text-align: right;
+    }
+
+    .about-us__intro > * {
+        max-width: 27rem;
+        margin-left: auto;
+    }
+
+    .about-us__body {
+        text-align: left;
+    }
+
+    .about-us__body > * {
+        max-width: 27rem;
+        margin-right: auto;
+    }
+
+    .order-online > * {
+        max-width: 70ch;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .order-online {
+        display: grid;
+    }
+
+    .products {
+        flex-direction: row;
+        max-width: 1200px;
+        padding: 0 5em;
+    }
+
+    .product {
+        margin: 0;
+        flex: 0 1 33%;
+        font-size: 16px;
+    }
+
+    .product + product {
+        margin-left: 1em;
+    }
+
+    .product:last-of-type {
+        margin-bottom: 0;
+    }
+
+}
+
+
+
+
+
+
+
+
+
 
 
